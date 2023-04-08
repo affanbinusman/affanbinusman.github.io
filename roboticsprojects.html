@@ -82,7 +82,7 @@
 						<!-- Two -->
 							<section id="two" class="spotlights">
 								<section>
-									<a href="" class="image">
+									<a class="image">
 										<img src="myimages/MRS/MRS11.jpg" alt="" data-position="center center" />
 										<img src="myimages/MRS/MRS2.png" alt="" data-position="center center" />
 										<img src="myimages/MRS/MRS1.png" alt="" data-position="center center" />
@@ -93,19 +93,19 @@
 										<div class="inner">
 											<header class="major">
 												<h3>Exploration & Mapping with Multi-Robots</h3>
-												NMPC + RRT* + Obstacle Avoidance + Path Planning + Sensing + Simulation
+												NMPC • RRT* • Obstacle Avoidance • Path Planning • Sensing • Simulation
 											</header>
 											<p><strong>Problem Statement</strong><br> To create a efficient system for exploring and mapping the search field using multiple robots and find the object(s) of interest
 												<br><br><strong>Target Audience</strong>
 												<br>Disaster Management (Search & Rescue), Defence (Exploration, Retrieval & Surveillance) 
 												<br><br><strong>Overview</strong>
-												<br>• Global path planning with combination of Levy walk & Brownian motion<br>• Local path planning with RRT*
-												<br>• Motion planning with Non-linear Model Predictive Controller (NMPC)<br>• Obstacle avoidance using potential gradient obstacle avoidance algorithm
-												<br>• Generalized local map coverage sharing among robots with ellipse fitting<br>• Scaleable system (tested for up to 10 robots)
-												<br>• 85+ simulations over 250m<sup>2</sup> area for 1-6 robots<br>• 100% Object finding accuracy with modified algorithms<br>• Coded in Python
+												<br>• Global path planning with combination of <strong>Levy</strong> walk & <strong>Brownian</strong> motion<br>• Local path planning with <strong>RRT*</strong>
+												<br>• Motion planning with <strong>Non-linear Model Predictive Controller</strong> (NMPC)<br>• Obstacle avoidance using <strong>potential gradient obstacle avoidance</strong> algorithm
+												<br>• Generalized local map coverage sharing among robots with ellipse fitting<br>• Scaleable system (tested for up to <strong>10</strong> robots)
+												<br>• <strong>85+</strong> simulations over <strong>250m<sup>2</sup></strong> area for 1-6 robots<br>• <strong>100%</strong> Object finding accuracy with modified algorithms<br>• Coded in <strong>Python</strong>
 
 												<br><br><strong>Example</strong>
-												<br>Voice Input: <i>"Affan person as a masterpiece portrait painting by John Singer Sargent in the style of Rembrandt"</i>
+												<br>Input: Object randomly placed, select number of robots
 												<br>Output: <i>See images for reference</i>
 												<br><br><strong>Tools & Frameworks</strong>
 												<br>Python • Matplotlib • SciPy • PyLab • NumPy • GitHub
@@ -119,75 +119,36 @@
 								</section>
 
 								<section>
-									<a href="" class="image">
-										<img src="myimages/img_cap/p2.png" alt="" data-position="top center" />
+									<a class="image">
+										<img src="myimages/4dof/p1.png" alt="" data-position="top center" />
+										<img src="myimages/4dof/p2.png" alt="" data-position="top center" />
+										<img src="myimages/4dof/p3.png" alt="" data-position="top center" />
 									</a>
 									
 									<div class="content">
 										<div class="inner">
 											<header class="major">
-												<h3>Image Captioning & Evaluation</h3>
-												Supervised Learning + Large Language Model (LLM) + CNN + RNN + NLP + CV
+												<h3>4 Degree of Freedom (DOF) Manipulator / Robot Arm</h3>
+												RRT* • Inverse Kinematics • Spline Interpolation • Trajectory Planning • Obstacle Avoidance
 											</header>
-											<p><strong>Problem Statement</strong><br>To re-train an image captioning model on a different dataset and evaluate using established metrics. 
-												<br>Train model from scratch to demonstrate effectiveness of utilizing multiple datasets. 
+											<p><strong>Problem Statement</strong><br>To simulate a 4 DOF arm and end effector using Modelling & Control of Robotics concepts 
 												<br><br><strong>Target Audience</strong>
-												<br>Visually Disabled People (Image Interpretation), Story Writers & Artists (Imaginative Inspiration)
+												<br>Future students (visual learning with easy simulation)
 												<br><br><strong>Overview</strong>
-												<br>• Segmentation using Attention Network<br>• Beam Search for sentence formation / captioning
-												<br>• Evaluation using F1 Score, Recall & evaluation models<br>• Datasets (Large-Scale): MS COCO, Flickr8k & Google Conceptual Captions
-												<br>• Fine-Tuning / Hyper Parameter Tuning ~ <strong>79.9%</strong> improvement*
-												<br>• Training from scratch VS Model Re-training ~ <strong>40%</strong> improvement*<br>• Pipeline: Image - Caption - Story - Stable Diffusion Model - Images
-												<br><br><i>* See table below for reference</i>
+												<br>• Path planning & obstacle avoidance with <strong>RRT*</strong>
+												<br>• Trajectory tracking & correction with <strong>PI</strong> controller<br>• <strong>Inverse Kinematics</strong> for joint angles
+												<br>• <strong>Spline Interpolation</strong> for motion smoothening<br>• <strong>95%</strong> Accurate modeling of moving the end effector to the desired pose
+												<br>• <strong>0.1</strong> norm of error<br>• Coded in <strong>MATLAB</strong><br>• Interface designed in <strong>App Designer</strong> (MATLAB)
+
 												<br><br><strong>Example</strong>
-												<br>Input & Output Image(s): <i>See cats image for reference</i>
-												<br>Output Caption: <i>"A cat laying on top of a couch next to another cat"</i>
+												<br>Input: Specify <i>x, y, z</i> coordinates ~ desired pose
+												<br>Output: <i>See images for reference</i>
 												<br><br><strong>Tools & Frameworks</strong>
-												<br>Python • PyTorch • LINUX • Bash Scripting • GPUs/CUDA/Distributed Computing
-												<br><br><strong>Table</strong>
+												<br>MATLAB • App Designer
 											</p>
 
-											<div class="table-wrapper">
-												<table class="alt">
-													<thead>
-														<tr>
-															<th>Metrics</th>
-															<th>VIT-GPT2 ~ Trained on COCO dataset (Base Model)</th>
-															<th>Model ~ Re-Trained using Flickr 8k dataset</th>
-															<th>Model ~ Trained from scratch on Flickr 8k dataset</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>SacreBLEU Score</td>
-															<td>18.58 %</td>
-															<td>33.44 %</td>
-															<td>12.42 %</td>
-														</tr>
-														<tr>
-															<td>Rogue Metric (Rouge-L)</td>
-															<td>14.1 %</td>
-															<td>20 %</td>
-															<td>12.52 %</td>
-														</tr>
-														<tr>
-															<td>Meteor Score</td>
-															<td>3.5 %</td>
-															<td>3.6 %</td>
-															<td>3.5 %</td>
-														</tr>
-														<tr>
-															<td>Cider Metric</td>
-															<td>2.88 %</td>
-															<td>1.25 %</td>
-															<td>0.79 %</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>	
-
 											<ul class="actions">
-												<li><a href="myimages/img_cap/CSE575-Group19-Presentation.pdf" class="button">Project Report</a></li>
+												<li><a href="myimages/4dof/MAE-547-Project2.pdf" class="button">Project Presentation</a></li>
 											</ul>
 										</div>
 									</div>
@@ -195,38 +156,7 @@
 									
 								</section>
 								
-								<!-- <section>
-									<a href="" class="image">
-										<img src="images/pic10.jpg" alt="" data-position="25% 25%" />
-									</a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Reinforcement Learning + Graph Search on TurtleBot3</h3>
-												Q-Value Update (RL) + Monte Carlo Simulations + Graph Search Algorithms
-											</header>
-											<p>• <br>• <br>• <br>• <br>• <br>•  </p>
-											<ul class="actions">
-												<li><a href="" class="button">Learn more</a></li>
-											</ul>
-										</div>
-									</div>
-								</section>
-								 -->
 							</section>
-
-						<!-- Three -->
-							<!-- <section id="three">
-								<div class="inner">
-									<header class="major">
-										<h2>Massa libero</h2>
-									</header>
-									<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
-									<ul class="actions">
-										<li><a href="" class="button next">Get Started</a></li>
-									</ul>
-								</div>
-							</section> -->
 
 							<section id="resume">
 								<div class="inner">
@@ -237,14 +167,10 @@
 										Wanted to see my resume? Glad you asked 😊
 										<p></p>
 										<ul class="actions">
-											<!-- <li><a href="#two" class="button next scrolly">Get Started</a></li> -->
-											<li><a href="https://drive.google.com/file/d/1AeXmk8S_RRI41H7qEaIhSIcyFfF6BvCP/view?usp=share_link" class="button next scrolly">AIML Resume</a></li>
+											<li><a href="https://drive.google.com/file/d/1lSAgBfBBDUt2PgDh4l53HHRUFWvb0FoV/view?usp=share_link" class="button next scrolly">Robotics Resume</a></li>
 										</ul>
-										
 									</p>
-									<!-- <ul class="actions">
-										<li><a href="landing.html" class="button next">Want to know what I do in my spare time?</a></li>
-									</ul> -->
+									
 								</div>
 							</section>
 					</div>
