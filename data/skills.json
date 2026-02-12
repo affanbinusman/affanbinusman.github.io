@@ -1,0 +1,46 @@
+{
+    "categories": [
+        {
+            "name": "AI/ML",
+            "skills": [
+                "Deep Learning (CNN, LSTM)",
+                "Generative AI",
+                "LLMs (Agents)",
+                "Computer Vision",
+                "Reinforcement Learning"
+            ]
+        },
+        {
+            "name": "Languages & Tools",
+            "skills": [
+                "Python",
+                "Bash",
+                "Git",
+                "Docker",
+                "Kubernetes",
+                "Google Cloud",
+                "Azure",
+                "BigQuery/SQL"
+            ]
+        },
+        {
+            "name": "ML Frameworks",
+            "skills": [
+                "PyTorch",
+                "TensorFlow",
+                "PyTorch Lightning",
+                "Hugging Face",
+                "LangChain"
+            ]
+        },
+        {
+            "name": "ML Deployment",
+            "skills": [
+                "ROS2",
+                "Real-Time Inference",
+                "CI/CD",
+                "ETL Pipelines"
+            ]
+        }
+    ]
+}

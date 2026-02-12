@@ -1,0 +1,55 @@
+[
+    {
+        "title": "Image Generation",
+        "tags": [
+            "Generative AI",
+            "Stable Diffusion",
+            "PyTorch"
+        ],
+        "description": "Fine-tuned a Stable Diffusion model on a custom dataset of 100+ images, engineering a pipeline including data augmentation and model training; achieved a 91% conformity rate for generated images."
+    },
+    {
+        "title": "Predictive Path Planning",
+        "tags": [
+            "GANs",
+            "Robotics",
+            "Motion Planning"
+        ],
+        "description": "Integrated a Social-GAN with an RRT* path-planning algorithm to create a predictive navigation system for a mobile robot; succeeding with a 70% success rate in avoiding collisions."
+    },
+    {
+        "title": "Autonomous Vehicle Perception",
+        "tags": [
+            "Computer Vision",
+            "YOLOv4",
+            "OpenCV"
+        ],
+        "description": "Built and trained a YOLOv4 model on a custom dataset of 550+ annotated images for real-time object detection; attained 90% detection accuracy."
+    },
+    {
+        "title": "Image Captioning with Attention",
+        "tags": [
+            "NLP",
+            "Transformers",
+            "PyTorch"
+        ],
+        "description": "Revamped performance by 80% on SacreBLEU score by applying transfer learning on an encoder-decoder model with an attention mechanism."
+    },
+    {
+        "title": "RL for Robotic Path Planning",
+        "tags": [
+            "Reinforcement Learning",
+            "Q-Learning"
+        ],
+        "description": "Implemented a Q-learning algorithm from scratch to train an agent for optimal navigation in a grid world."
+    },
+    {
+        "title": "Multi-Robot Exploration & Mapping",
+        "tags": [
+            "Robotics",
+            "Simulation",
+            "Levy Walk"
+        ],
+        "description": "Designed a multi-robot simulation for search-and-rescue, attaining 100% mapping accuracy using potential gradient obstacle avoidance."
+    }
+]

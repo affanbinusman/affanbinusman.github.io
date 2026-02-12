@@ -1,0 +1,33 @@
+{
+    "education": [
+        {
+            "school": "Arizona State University (ASU)",
+            "degree": "MSC Robotics & Autonomous Systems (AI)",
+            "gpa": "4.0/4.0",
+            "date": "May 2023"
+        },
+        {
+            "school": "National University of Sciences & Technology",
+            "degree": "BE Electrical Engineering",
+            "date": "May 2019"
+        }
+    ],
+    "publications": [
+        {
+            "title": "Modeling interpersonal perception in dyadic interactions: towards robot-assisted social mediation",
+            "venue": "Frontiers in Robotics and AI",
+            "year": "2024",
+            "link": "https://doi.org/10.3389/frobt.2024.1410957",
+            "citations": 0,
+            "associated_with": "Honda Research Institute"
+        },
+        {
+            "title": "Graph-Based Modeling Of Relational Affect in Group Interactions",
+            "venue": "US Patent Application",
+            "year": "2024",
+            "link": "https://patents.google.com/?q=Graph-Based+Modeling+Of+Relational+Affect+in+Group+Interactions",
+            "citations": 0,
+            "associated_with": "Honda Research Institute"
+        }
+    ]
+}

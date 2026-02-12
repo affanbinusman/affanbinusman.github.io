@@ -1,0 +1,76 @@
+[
+    {
+        "company": "Gatik AI",
+        "location": "Mountain View, CA",
+        "role": "Machine Learning Engineer",
+        "date": "July 2025 – Present",
+        "logo": "assets/images/gatik_logo.png",
+        "keywords": [
+            "Autonomous Vehicle",
+            "Autonomous Perception",
+            "Model Benchmarking",
+            "Scalable Evaluation",
+            "Production ML"
+        ],
+        "visible": true
+    },
+    {
+        "company": "Honda Research Institute",
+        "location": "San Jose, CA",
+        "role": "Research Engineer (Machine Learning)",
+        "date": "Dec 2023 – Mar 2025",
+        "logo": "assets/images/honda_logo.png",
+        "keywords": [
+            "Deep Learning",
+            "LSTM",
+            "Social Robots",
+            "Multimodal Perception",
+            "ROS2 Integration",
+            "Real-time Inference",
+            "LLM Agents",
+            "User Studies"
+        ],
+        "visible": true
+    },
+    {
+        "company": "Arizona State University",
+        "location": "Tempe, AZ",
+        "role": "Faculty Associate",
+        "date": "Aug 2023 – Dec 2023",
+        "logo": "assets/images/asu_logo.png",
+        "keywords": [
+            "Engineering Foundamentals",
+            "Research & Prototyping",
+            "Mentorship (150+ students)"
+        ],
+        "visible": true
+    },
+    {
+        "company": "Jenius Bank",
+        "location": "Scottsdale, AZ",
+        "role": "Data Engineer (ML)",
+        "date": "Sep 2023 – Dec 2023",
+        "logo": "assets/images/jenius_logo.png",
+        "keywords": [
+            "ETL Automation",
+            "Airflow",
+            "BigQuery",
+            "Data Integration"
+        ],
+        "visible": true
+    },
+    {
+        "company": "Interactive Robotics Lab",
+        "location": "Tempe, AZ",
+        "role": "ML Research Intern",
+        "date": "May 2023 – Sep 2023",
+        "logo": "assets/images/asu_logo.png",
+        "keywords": [
+            "Gesture Recognition",
+            "LSTM",
+            "Signal Processing",
+            "Wearable Sensors"
+        ],
+        "visible": true
+    }
+]
