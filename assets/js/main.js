@@ -255,7 +255,7 @@ async function loadPublications() {
                 <div class="pub-title">${pub.title}</div>
                 <div class="pub-venue">${pub.venue}, ${pub.year}</div>
                 ${assocHTML}
-                ${pub.link ? `<a href="${pub.link}" target="_blank" class="pub-link">View Patent/Paper <i class="fas fa-arrow-right"></i></a>` : ''}
+                ${pub.link ? `<a href="${pub.link}" target="_blank" class="pub-link">View <i class="fas fa-arrow-right"></i></a>` : ''}
             `;
             container.appendChild(card);
         });
