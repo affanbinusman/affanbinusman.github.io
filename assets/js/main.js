@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupScrollSpy();
 
-    // Smooth scrolling for nav links
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -28,9 +27,7 @@ function setupScrollSpy() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const id = entry.target.getAttribute('id');
-                // Remove active from all
                 navLinks.forEach(link => link.classList.remove('active'));
-                // Add active to current
                 const activeLink = document.querySelector(`nav ul li a[href="#${id}"]`);
                 if (activeLink) activeLink.classList.add('active');
             }
@@ -42,13 +39,31 @@ function setupScrollSpy() {
     sections.forEach(section => observer.observe(section));
 }
 
+// Safari-safe date parser
+function parseDate(dateStr) {
+    if (!dateStr || dateStr.toLowerCase() === 'present') return new Date();
+
+    // Expect "Month Year" e.g., "July 2025" or "Dec 2023"
+    const parts = dateStr.trim().split(' ');
+    if (parts.length < 2) return new Date(dateStr); // Fallback
+
+    const monthNames = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+    const monthIndex = monthNames.findIndex(m => parts[0].toLowerCase().startsWith(m));
+    const year = parseInt(parts[1]);
+
+    if (monthIndex !== -1 && !isNaN(year)) {
+        return new Date(year, monthIndex, 1);
+    }
+    return new Date(dateStr);
+}
+
 function calculateDuration(dateString) {
     try {
         const parts = dateString.split('–').map(s => s.trim());
         if (parts.length !== 2) return '';
 
-        const start = new Date(parts[0]);
-        const end = parts[1].toLowerCase() === 'present' ? new Date() : new Date(parts[1]);
+        const start = parseDate(parts[0]);
+        const end = parseDate(parts[1]);
 
         if (isNaN(start.getTime()) || isNaN(end.getTime())) return '';
 
@@ -92,7 +107,6 @@ async function loadProfile() {
         if (data.contact.email_link) {
             emailBtn.href = data.contact.email_link;
         }
-
         contactContainer.innerHTML = `<span><i class="fas fa-map-pin"></i> ${data.contact.location}</span>`;
 
     } catch (e) {
@@ -106,7 +120,6 @@ async function loadExperience() {
         const data = await response.json();
         const container = document.getElementById('experience-list');
 
-        // Reset container classes for standard layout
         container.classList.add('cards-container', 'single-col');
 
         data.forEach(job => {
@@ -119,6 +132,12 @@ async function loadExperience() {
             const duration = calculateDuration(job.date);
             const durationHTML = duration ? `<span class="duration-text">• ${duration}</span>` : '';
 
+            // Logo Logic
+            let logoHTML = `<img src="${logoSrc}" alt="${job.company} Logo" class="company-logo" onerror="this.src='https://placehold.co/48x48/f3f4f6/9ca3af?text=Logo'">`;
+            if (job.url) {
+                logoHTML = `<a href="${job.url}" target="_blank" class="logo-link" title="Visit ${job.company}">${logoHTML}</a>`;
+            }
+
             let contentHTML = '';
             if (job.keywords && Array.isArray(job.keywords)) {
                 const tags = job.keywords.map(k => `<span class="exp-keyword">${k}</span>`).join('');
@@ -130,17 +149,19 @@ async function loadExperience() {
 
             card.innerHTML = `
                 <div class="exp-card-header">
-                    <img src="${logoSrc}" alt="${job.company} Logo" class="company-logo" onerror="this.src='https://placehold.co/48x48/f3f4f6/9ca3af?text=Logo'">
+                    ${logoHTML}
                     <div class="exp-details">
-                        <div class="role-title">${job.role}</div>
+                        <div class="role-title">
+                            <span>${job.role}</span>
+                        </div>
                         <div class="company-name">${job.company} | ${job.location}</div>
-                        <div style="margin-top:2px">
+                        <div class="date-row">
                             <span class="date-badge">${job.date}</span>
                             ${durationHTML}
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="exp-body">
                     ${contentHTML}
                 </div>
             `;
@@ -164,7 +185,7 @@ async function loadSkills() {
             const chips = cat.skills.map(skill => `<span class="tech-chip">${skill}</span>`).join('');
 
             card.innerHTML = `
-                <div class="role-title" style="margin-bottom:0.75rem; font-size:1rem">${cat.name}</div>
+                <div class="role-title" style="margin-bottom:0.5rem; font-size:1rem">${cat.name}</div>
                 <div class="tech-stack">
                     ${chips}
                 </div>
@@ -192,9 +213,7 @@ async function loadProjects() {
             card.innerHTML = `
                 <div class="project-img-placeholder" style="background-image: url('${imgUrl}');"></div>
                 <div class="role-title" style="font-size:1rem">${proj.title}</div>
-                <div class="card-body">
-                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem">${proj.description}</p>
-                </div>
+                <div style="font-size: 0.85rem; margin-top: 0.25rem">${proj.description}</div>
                 <div class="tech-stack">${tags}</div>
             `;
             container.appendChild(card);
@@ -216,15 +235,17 @@ async function loadEducation() {
 
             let gpaHTML = '';
             if (edu.gpa) {
-                gpaHTML = `<div style="font-size:0.85rem; margin-top:0.5rem; color:var(--text-secondary)">GPA: ${edu.gpa}</div>`;
+                gpaHTML = `<div style="font-size:0.8rem; margin-top:0.25rem; color:var(--text-secondary)">GPA: ${edu.gpa}</div>`;
             }
 
             card.innerHTML = `
                 <div class="exp-card-header">
                      <div class="exp-details">
                         <div class="role-title">${edu.school}</div>
-                        <div class="company-name">${edu.degree}</div>
-                        <span class="date-badge">${edu.date}</span>
+                        <div class="company-name" style="margin-top:0.25rem">${edu.degree}</div>
+                        <div class="date-row" style="margin-top:0.25rem">
+                            <span class="date-badge">${edu.date}</span>
+                        </div>
                         ${gpaHTML}
                      </div>
                 </div>
