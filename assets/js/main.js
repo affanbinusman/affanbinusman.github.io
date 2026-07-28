@@ -4,9 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPublications();
     loadEducation();
     loadSkills();
-    loadProjects().then(() => {
-        handleUrlHashModal();
-    });
+    loadProjects();
     loadScholar();
 
     setupScrollSpy();
@@ -56,21 +54,6 @@ function setupModalEvents() {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
     });
-}
-
-function handleUrlHashModal() {
-    const hash = window.location.hash.toLowerCase();
-    if (!hash || !window.allProjectsData) return;
-
-    if (hash === '#roboticsprojects.html' || hash === '#roboticsprojects' || hash === '#multi-robot-exploration') {
-        const targetProj = window.allProjectsData.find(p => 
-            p.title.toLowerCase().includes('multi-robot') || p.title.toLowerCase().includes('exploration')
-        );
-        if (targetProj) {
-            openModal(targetProj);
-            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-        }
-    }
 }
 
 // Carousel State
@@ -341,7 +324,6 @@ async function loadProjects() {
     try {
         const response = await fetch('data/projects.json?v=' + new Date().getTime());
         const data = await response.json();
-        window.allProjectsData = data;
         const container = document.getElementById('projects-list');
 
         data.forEach(proj => {
