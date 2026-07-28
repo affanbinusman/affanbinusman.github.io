@@ -6,7 +6,12 @@
             "Stable Diffusion",
             "PyTorch"
         ],
-        "description": "Fine-tuned a Stable Diffusion model on a custom dataset of 100+ images, engineering a pipeline including data augmentation and model training; achieved a 91% conformity rate for generated images."
+        "description": "Fine-tuned a Stable Diffusion model on a custom dataset of 100+ images, engineering a pipeline including data augmentation and model training; achieved a 91% conformity rate for generated images.",
+        "images": [
+            "assets/images/myimages/Image_Gen/project1.png",
+            "assets/images/myimages/Image_Gen/p2.JPG",
+            "assets/images/myimages/Image_Gen/p3.png"
+        ]
     },
     {
         "title": "Predictive Path Planning",
@@ -15,7 +20,13 @@
             "Robotics",
             "Motion Planning"
         ],
-        "description": "Integrated a Social-GAN with an RRT* path-planning algorithm to create a predictive navigation system for a mobile robot; succeeding with a 70% success rate in avoiding collisions."
+        "description": "Integrated a Social-GAN with an RRT* path-planning algorithm to create a predictive navigation system for a mobile robot; succeeding with a 70% success rate in avoiding collisions.",
+        "images": [
+            "assets/images/myimages/Pred Path Planning/Screenshot 2026-07-28 at 12.02.43 AM.png",
+            "assets/images/myimages/Pred Path Planning/Screenshot 2026-07-28 at 12.03.00 AM.png",
+            "assets/images/myimages/Pred Path Planning/Screenshot 2026-07-28 at 12.03.18 AM.png",
+            "assets/images/myimages/Pred Path Planning/Screenshot 2026-07-28 at 12.03.48 AM.png"
+        ]
     },
     {
         "title": "Autonomous Vehicle Perception",
@@ -24,7 +35,11 @@
             "YOLOv4",
             "OpenCV"
         ],
-        "description": "Built and trained a YOLOv4 model on a custom dataset of 550+ annotated images for real-time object detection; attained 90% detection accuracy."
+        "description": "Built and trained a YOLOv4 model on a custom dataset of 550+ annotated images for real-time object detection; attained 90% detection accuracy.",
+        "images": [
+            "assets/images/myimages/PIR/IMG_2859.JPG",
+            "assets/images/myimages/PIR/2.png"
+        ]
     },
     {
         "title": "Image Captioning with Attention",
@@ -33,7 +48,11 @@
             "Transformers",
             "PyTorch"
         ],
-        "description": "Revamped performance by 80% on SacreBLEU score by applying transfer learning on an encoder-decoder model with an attention mechanism."
+        "description": "Revamped performance by 80% on SacreBLEU score by applying transfer learning on an encoder-decoder model with an attention mechanism.",
+        "images": [
+            "assets/images/myimages/img_cap/p1.png",
+            "assets/images/myimages/img_cap/p2.png"
+        ]
     },
     {
         "title": "RL for Robotic Path Planning",
@@ -41,7 +60,10 @@
             "Reinforcement Learning",
             "Q-Learning"
         ],
-        "description": "Implemented a Q-learning algorithm from scratch to train an agent for optimal navigation in a grid world."
+        "description": "Implemented a Q-learning algorithm from scratch to train an agent for optimal navigation in a grid world.",
+        "images": [
+            "assets/images/myimages/rl/p1.png"
+        ]
     },
     {
         "title": "Multi-Robot Exploration & Mapping",
@@ -50,6 +72,13 @@
             "Simulation",
             "Levy Walk"
         ],
-        "description": "Designed a multi-robot simulation for search-and-rescue, attaining 100% mapping accuracy using potential gradient obstacle avoidance."
+        "description": "Designed a multi-robot simulation for search-and-rescue, attaining 100% mapping accuracy using potential gradient obstacle avoidance.",
+        "images": [
+            "assets/images/myimages/MRS/MRS1.png",
+            "assets/images/myimages/MRS/MRS2.png",
+            "assets/images/myimages/MRS/MRS3.png",
+            "assets/images/myimages/MRS/MRS4.JPG",
+            "assets/images/myimages/MRS/MRS8.png"
+        ]
     }
 ]

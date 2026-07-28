@@ -63,20 +63,30 @@
         <!-- Main Content -->
         <main id="main-content">
 
-            <section id="experience" class="section">
-                <h3 class="section-title"><i class="fas fa-briefcase"></i> Experience</h3>
-                <div class="cards-container single-col" id="experience-list">
-                    <!-- Injected by JS -->
-                </div>
-            </section>
+            <!-- Grid Row for Experience and Skills -->
+            <div class="desktop-grid-row">
+                <section id="experience" class="section">
+                    <h3 class="section-title"><i class="fas fa-briefcase"></i> Experience</h3>
+                    <div class="cards-container single-col" id="experience-list">
+                        <!-- Injected by JS -->
+                    </div>
+                </section>
+
+                <section id="skills" class="section">
+                    <h3 class="section-title"><i class="fas fa-microchip"></i> Skills</h3>
+                    <div class="cards-container grid-col" id="skills-list">
+                        <!-- Injected by JS -->
+                    </div>
+                </section>
+            </div>
 
             <section id="publications" class="section">
                 <div class="section-header-row">
                     <h3 class="section-title"><i class="fas fa-book"></i> Publications & Patents</h3>
-                    <div class="scholar-badge" id="scholar-badge">
+                    <a href="https://scholar.google.com/citations?user=TndS5QcAAAAJ&hl=en" target="_blank" class="scholar-badge" id="scholar-badge" style="text-decoration: none;">
                         <i class="fas fa-quote-right"></i>
                         <span id="scholar-count">Fetching...</span>
-                    </div>
+                    </a>
                 </div>
                 <div class="cards-container single-col" id="publications-list">
                     <!-- Injected by JS -->
@@ -90,13 +100,6 @@
                 </div>
             </section>
 
-            <section id="skills" class="section">
-                <h3 class="section-title"><i class="fas fa-microchip"></i> Skills</h3>
-                <div class="cards-container grid-col" id="skills-list">
-                    <!-- Injected by JS -->
-                </div>
-            </section>
-
             <section id="projects" class="section">
                 <h3 class="section-title"><i class="fas fa-code-branch"></i> Projects</h3>
                 <div class="cards-container grid-col" id="projects-list">
@@ -105,6 +108,25 @@
             </section>
 
         </main>
+        <!-- Project Modal -->
+        <div id="project-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-body">
+                    <div class="modal-image-container">
+                        <img id="modal-img" src="" alt="Project Image">
+                        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+                        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+                    </div>
+                    <div class="carousel-dots" id="carousel-dots"></div>
+                    <div class="modal-info">
+                        <h2 id="modal-title"></h2>
+                        <div id="modal-tags" class="tech-stack"></div>
+                        <p id="modal-desc"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="assets/js/main.js"></script>

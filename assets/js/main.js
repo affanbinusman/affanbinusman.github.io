@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadScholar();
 
     setupScrollSpy();
+    setupModalEvents();
 
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -39,13 +40,109 @@ function setupScrollSpy() {
     sections.forEach(section => observer.observe(section));
 }
 
-// Safari-safe date parser
+function setupModalEvents() {
+    const modal = document.getElementById('project-modal');
+    const closeBtn = document.querySelector('.close-modal');
+
+    closeBtn.onclick = () => closeModal();
+    window.onclick = (event) => {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+    // Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+}
+
+// Carousel State
+let currentProjectImages = [];
+let currentSlideIndex = 0;
+
+function openModal(project) {
+    console.log("Opening modal for:", project.title);
+    const modal = document.getElementById('project-modal');
+    if (!modal) return;
+
+    // Load Images
+    if (project.images && project.images.length > 0) {
+        currentProjectImages = project.images;
+    } else if (project.image) {
+        currentProjectImages = [project.image];
+    } else {
+        currentProjectImages = [`https://placehold.co/600x300/1e293b/475569?text=${encodeURIComponent(project.title)}`];
+    }
+
+    currentSlideIndex = 0;
+    showSlide(currentSlideIndex);
+
+    document.getElementById('modal-title').textContent = project.title;
+    document.getElementById('modal-desc').textContent = project.description;
+
+    const tagsContainer = document.getElementById('modal-tags');
+    tagsContainer.innerHTML = project.tags.map(t => `<span class="tech-chip">${t}</span>`).join('');
+
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+        modal.classList.add('visible');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+}
+
+function changeSlide(n) {
+    showSlide(currentSlideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlide(currentSlideIndex = n);
+}
+
+function showSlide(n) {
+    if (currentProjectImages.length === 0) return;
+
+    if (n >= currentProjectImages.length) { currentSlideIndex = 0; }
+    if (n < 0) { currentSlideIndex = currentProjectImages.length - 1; }
+
+    const imgElement = document.getElementById('modal-img');
+    imgElement.src = currentProjectImages[currentSlideIndex];
+
+    // Update Dots
+    const dotsContainer = document.getElementById('carousel-dots');
+    dotsContainer.innerHTML = '';
+
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+
+    if (currentProjectImages.length > 1) {
+        if (prevBtn) prevBtn.style.display = "block";
+        if (nextBtn) nextBtn.style.display = "block";
+
+        currentProjectImages.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.className = index === currentSlideIndex ? 'dot active-dot' : 'dot';
+            dot.onclick = () => currentSlide(index);
+            dotsContainer.appendChild(dot);
+        });
+    } else {
+        if (prevBtn) prevBtn.style.display = "none";
+        if (nextBtn) nextBtn.style.display = "none";
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById('project-modal');
+    modal.classList.remove('visible');
+    setTimeout(() => {
+        modal.classList.add('hidden');
+    }, 300); // match css transition
+    document.body.style.overflow = '';
+}
+
 function parseDate(dateStr) {
     if (!dateStr || dateStr.toLowerCase() === 'present') return new Date();
-
-    // Expect "Month Year" e.g., "July 2025" or "Dec 2023"
     const parts = dateStr.trim().split(' ');
-    if (parts.length < 2) return new Date(dateStr); // Fallback
+    if (parts.length < 2) return new Date(dateStr);
 
     const monthNames = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
     const monthIndex = monthNames.findIndex(m => parts[0].toLowerCase().startsWith(m));
@@ -69,16 +166,13 @@ function calculateDuration(dateString) {
 
         let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
         months += 1;
-
         if (months < 1) months = 0;
-
         const years = Math.floor(months / 12);
         const remainingMonths = months % 12;
 
         let duration = '';
         if (years > 0) duration += `${years} yr${years > 1 ? 's' : ''} `;
         if (remainingMonths > 0) duration += `${remainingMonths} mo${remainingMonths > 1 ? 's' : ''}`;
-
         return duration.trim();
     } catch (e) {
         console.error("Error calculating duration", e);
@@ -88,12 +182,17 @@ function calculateDuration(dateString) {
 
 async function loadProfile() {
     try {
-        const response = await fetch('data/profile.json');
+        const response = await fetch('data/profile.json?v=' + new Date().getTime());
         const data = await response.json();
+        console.log("Profile Data Loaded:", data);
 
         document.getElementById('name').textContent = data.name;
         document.getElementById('role').textContent = data.role;
         document.getElementById('summary').textContent = data.summary;
+
+        if (data.image) {
+            document.getElementById('profile-img').src = data.image;
+        }
 
         const socialContainer = document.getElementById('social-links');
         const contactContainer = document.getElementById('contact-info');
@@ -116,14 +215,30 @@ async function loadProfile() {
 
 async function loadExperience() {
     try {
-        const response = await fetch('data/experience.json');
+        const response = await fetch('data/experience.json?v=' + new Date().getTime());
         const data = await response.json();
         const container = document.getElementById('experience-list');
 
         container.classList.add('cards-container', 'single-col');
 
+        // Calculate total experience duration across visible roles
+        let totalMonths = 0;
+
         data.forEach(job => {
             if (!job.visible) return;
+
+            // Calculate months for total counter
+            try {
+                const parts = job.date.split('–').map(s => s.trim());
+                if (parts.length === 2) {
+                    const start = parseDate(parts[0]);
+                    const end = parseDate(parts[1]);
+                    if (!isNaN(start.getTime()) && !isNaN(end.getTime())) {
+                        let m = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth()) + 1;
+                        if (m > 0) totalMonths += m;
+                    }
+                }
+            } catch (e) {}
 
             const card = document.createElement('div');
             card.className = 'card';
@@ -132,7 +247,6 @@ async function loadExperience() {
             const duration = calculateDuration(job.date);
             const durationHTML = duration ? `<span class="duration-text">• ${duration}</span>` : '';
 
-            // Logo Logic
             let logoHTML = `<img src="${logoSrc}" alt="${job.company} Logo" class="company-logo" onerror="this.src='https://placehold.co/48x48/f3f4f6/9ca3af?text=Logo'">`;
             if (job.url) {
                 logoHTML = `<a href="${job.url}" target="_blank" class="logo-link" title="Visit ${job.company}">${logoHTML}</a>`;
@@ -167,6 +281,15 @@ async function loadExperience() {
             `;
             container.appendChild(card);
         });
+
+        // Update Section Title with Total Experience in brackets
+        if (totalMonths > 0) {
+            const years = (totalMonths / 12).toFixed(1).replace('.0', '');
+            const titleEl = document.querySelector('#experience .section-title');
+            if (titleEl) {
+                titleEl.innerHTML = `<i class="fas fa-briefcase"></i> Experience <span style="font-size: 0.85em; font-weight: 500; opacity: 0.8;">(${years}+ yrs)</span>`;
+            }
+        }
     } catch (e) {
         console.error("Error loading experience:", e);
     }
@@ -174,7 +297,7 @@ async function loadExperience() {
 
 async function loadSkills() {
     try {
-        const response = await fetch('data/skills.json');
+        const response = await fetch('data/skills.json?v=' + new Date().getTime());
         const data = await response.json();
         const container = document.getElementById('skills-list');
 
@@ -199,16 +322,27 @@ async function loadSkills() {
 
 async function loadProjects() {
     try {
-        const response = await fetch('data/projects.json');
+        const response = await fetch('data/projects.json?v=' + new Date().getTime());
         const data = await response.json();
         const container = document.getElementById('projects-list');
 
         data.forEach(proj => {
             const card = document.createElement('div');
-            card.className = 'card';
+            card.className = 'card project-card'; // Added class
 
-            const imgUrl = `https://placehold.co/600x300/1e293b/475569?text=${encodeURIComponent(proj.title)}`;
+            // Use the first image from the array if available, otherwise fallback to 'image' or placeholder
+            let imgUrl = proj.image;
+            if (proj.images && proj.images.length > 0) {
+                imgUrl = proj.images[0];
+            }
+            if (!imgUrl) {
+                imgUrl = `https://placehold.co/600x300/1e293b/475569?text=${encodeURIComponent(proj.title)}`;
+            }
+
             const tags = proj.tags.map(t => `<span class="tech-chip">${t}</span>`).join('');
+
+            // Click event for Modal
+            card.onclick = () => openModal(proj);
 
             card.innerHTML = `
                 <div class="project-img-placeholder" style="background-image: url('${imgUrl}');"></div>
@@ -241,7 +375,10 @@ async function loadEducation() {
             card.innerHTML = `
                 <div class="exp-card-header">
                      <div class="exp-details">
-                        <div class="role-title">${edu.school}</div>
+                        <div class="role-title">
+                            ${edu.school}
+                            ${edu.url ? `<a href="${edu.url}" target="_blank" class="pub-link-icon" title="Visit School"><i class="fas fa-external-link-alt"></i></a>` : ''}
+                        </div>
                         <div class="company-name" style="margin-top:0.25rem">${edu.degree}</div>
                         <div class="date-row" style="margin-top:0.25rem">
                             <span class="date-badge">${edu.date}</span>
@@ -273,10 +410,12 @@ async function loadPublications() {
             }
 
             card.innerHTML = `
-                <div class="pub-title">${pub.title}</div>
+                <div class="pub-title">
+                    ${pub.title}
+                    ${pub.link ? `<a href="${pub.link}" target="_blank" class="pub-link-icon" title="View Publication"><i class="fas fa-external-link-alt"></i></a>` : ''}
+                </div>
                 <div class="pub-venue">${pub.venue}, ${pub.year}</div>
                 ${assocHTML}
-                ${pub.link ? `<a href="${pub.link}" target="_blank" class="pub-link">View <i class="fas fa-arrow-right"></i></a>` : ''}
             `;
             container.appendChild(card);
         });
@@ -287,7 +426,7 @@ async function loadPublications() {
 
 async function loadScholar() {
     try {
-        const response = await fetch('data/scholar.json');
+        const response = await fetch('data/scholar.json?v=' + new Date().getTime());
         const data = await response.json();
         if (data.citations > 0) {
             document.getElementById('scholar-count').textContent = `Total Citations: ${data.citations}`;

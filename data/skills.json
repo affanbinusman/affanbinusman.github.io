@@ -4,10 +4,22 @@
             "name": "AI/ML",
             "skills": [
                 "Deep Learning (CNN, LSTM)",
+                "Perception",
                 "Generative AI",
                 "LLMs (Agents)",
                 "Computer Vision",
                 "Reinforcement Learning"
+            ]
+        },
+        {
+            "name": "Model Engineering",
+            "skills": [
+                "Model Training",
+                "Architecture Design",
+                "Inference Optimization",
+                "Caching Strategies",
+                "Distributed Training",
+                "Model Evaluation"
             ]
         },
         {
@@ -20,6 +32,7 @@
                 "Kubernetes",
                 "Google Cloud",
                 "Azure",
+                "Grafana",
                 "BigQuery/SQL"
             ]
         },

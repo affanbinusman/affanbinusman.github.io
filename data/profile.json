@@ -1,12 +1,14 @@
 {
     "name": "Affan Bin Usman",
     "role": "Machine Learning Research Engineer",
+    "image": "assets/images/myimages/Affan1.png",
     "contact": {
+        "phone": "(602) 756-3989",
         "email_link": "mailto:affanbu25@gmail.com",
         "location": "Santa Clara, CA"
     },
     "social": {
-        "linkedin": "https://linkedin.com/in/affanbinusman",
+        "linkedin": "https://www.linkedin.com/in/affan-bin-usman",
         "github": "https://github.com/affanbinusman",
         "scholar": "https://scholar.google.com/citations?user=TndS5QcAAAAJ&hl=en"
     },

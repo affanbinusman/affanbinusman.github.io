@@ -4,14 +4,23 @@
         "location": "Mountain View, CA",
         "role": "Machine Learning Engineer",
         "date": "July 2025 – Present",
-        "logo": "assets/images/gatik_logo.png",
+        "logo": "assets/images/logos/gatik.jpg",
         "url": "https://gatik.ai",
         "keywords": [
-            "Autonomous Vehicle",
-            "Autonomous Perception",
+            "Evaluation Frameworks",
+            "Perception & Tracking",
+            "Traffic Light & State Estimation",
+            "Object Detection & Prediction",
             "Model Benchmarking",
-            "Scalable Evaluation",
-            "Production ML"
+            "Azure / Airflow / Grafana",
+            "ML Infra & Deployment",
+            "Vendor Data Annotation"
+        ],
+        "description": [
+            "Architected and deployed a scalable end-to-end evaluation framework to capture object detection, tracking, and prediction metrics across Azure, Kubernetes, Apache Airflow, and Grafana.",
+            "Guaranteed model and metric determinism on target autonomous vehicle hardware by designing a robust mechanism re-running inputs against updated perception models.",
+            "Bridged research and production by prototyping advanced algorithms for perception, semantics, traffic light detection, and state estimation, benchmarking SOTA models against internal baselines.",
+            "Directed autonomous vehicle data annotation enhancements by collaborating directly with external vendors to improve ground-truth data quality for downstream perception tasks."
         ],
         "visible": true
     },
@@ -20,7 +29,7 @@
         "location": "San Jose, CA",
         "role": "Research Engineer (Machine Learning)",
         "date": "Dec 2023 – Mar 2025",
-        "logo": "assets/images/honda_logo.png",
+        "logo": "assets/images/logos/honda.png",
         "url": "https://usa.honda-ri.com",
         "keywords": [
             "Deep Learning",
@@ -39,7 +48,7 @@
         "location": "Tempe, AZ",
         "role": "Faculty Associate",
         "date": "Aug 2023 – Dec 2023",
-        "logo": "assets/images/asu_logo.png",
+        "logo": "assets/images/logos/asu.webp",
         "url": "https://www.asu.edu",
         "keywords": [
             "Engineering Foundamentals",
@@ -53,7 +62,7 @@
         "location": "Scottsdale, AZ",
         "role": "Data Engineer (ML)",
         "date": "Sep 2023 – Dec 2023",
-        "logo": "assets/images/jenius_logo.png",
+        "logo": "assets/images/logos/jenius.jpg",
         "url": "https://www.jeniusbank.com",
         "keywords": [
             "ETL Automation",
@@ -68,7 +77,7 @@
         "location": "Tempe, AZ",
         "role": "ML Research Intern",
         "date": "May 2023 – Sep 2023",
-        "logo": "assets/images/asu_logo.png",
+        "logo": "assets/images/logos/IRL.png",
         "url": "https://interactive-robotics.engineering.asu.edu",
         "keywords": [
             "Gesture Recognition",

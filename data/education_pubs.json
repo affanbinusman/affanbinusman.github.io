@@ -4,12 +4,14 @@
             "school": "Arizona State University (ASU)",
             "degree": "MS Robotics & Autonomous Systems (AI)",
             "gpa": "4.0/4.0",
-            "date": "May 2023"
+            "date": "May 2023",
+            "url": "https://scai.engineering.asu.edu"
         },
         {
             "school": "National University of Sciences & Technology",
             "degree": "BE Electrical Engineering",
-            "date": "May 2019"
+            "date": "May 2019",
+            "url": "https://seecs.nust.edu.pk"
         }
     ],
     "publications": [
