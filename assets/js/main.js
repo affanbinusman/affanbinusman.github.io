@@ -199,9 +199,9 @@ async function loadProfile() {
         const emailBtn = document.getElementById('email-btn');
 
         socialContainer.innerHTML = '';
-        if (data.social.linkedin) socialContainer.innerHTML += `<a href="${data.social.linkedin}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>`;
-        if (data.social.github) socialContainer.innerHTML += `<a href="${data.social.github}" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>`;
-        if (data.social.scholar) socialContainer.innerHTML += `<a href="${data.social.scholar}" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>`;
+        if (data.social.linkedin) socialContainer.innerHTML += `<a href="${data.social.linkedin}" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a>`;
+        if (data.social.github) socialContainer.innerHTML += `<a href="${data.social.github}" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>`;
+        if (data.social.scholar) socialContainer.innerHTML += `<a href="${data.social.scholar}" target="_blank" rel="noopener noreferrer" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>`;
 
         if (data.contact.email_link) {
             emailBtn.href = data.contact.email_link;
