@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPublications();
     loadEducation();
     loadSkills();
-    loadProjects();
+    loadProjects().then(() => {
+        handleInitialHashScroll();
+    });
     loadScholar();
 
     setupScrollSpy();
@@ -18,7 +20,20 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    handleInitialHashScroll();
 });
+
+function handleInitialHashScroll() {
+    if (window.location.hash) {
+        const targetEl = document.querySelector(window.location.hash);
+        if (targetEl) {
+            setTimeout(() => {
+                targetEl.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+    }
+}
 
 function setupScrollSpy() {
     const sections = document.querySelectorAll('.section');
